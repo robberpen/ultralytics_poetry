@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "ultralytics-poetry"
+version = "0.1.0"
+description = ""
+authors = ["peter_pan <peter_pan@sera-network.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
