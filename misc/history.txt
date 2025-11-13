@@ -1,0 +1,46 @@
+poetry shell
+yolo predict model=yolov8n.pt source=../tensortool/samples/face-640x640.bmp imgsz=320
+
+
+> poetry run yolo predict model=yolov8n.pt source=face-640x640.bmp imgsz=320
+
+$ yolo export model=yolov8n.pt format=tflite imgsz=320 int8
+
+requirements: Ultralytics requirement ['tensorflow>=2.0.0,<=2.19.0'] not found, attempting AutoUpdate...
+
+> pip index versions tensorflow
+> poetry add "tensorflow==2.18"
+
+
+TensorFlow SavedModel: starting export with tensorflow 2.18.0...
+requirements: Ultralytics requirements ['onnx>=1.12.0', 'onnxslim>=0.1.67', 'onnxruntime'] not found, attempting AutoUpdate.
+..
+^CWARNING _
+ERROR __ ONNX: export failure 1.7s: No module named 'onnx'
+ERROR __ TensorFlow SavedModel: export failure 12.6s: No module named 'onnx'
+
+>  poetry add 'onnx>=1.12.0'
+
+---
+> 
+File "/media/peter/share2507/AI/ultralytics_poetry/.venv/lib/python3.10/site-packages/onnx/_mapping.py", line 104, in <module>
+np.dtype(ml_dtypes.float4_e2m1fn),
+AttributeError: module 'ml_dtypes' has no attribute 'float4_e2m1fn'. Did you mean: 'float8_e4m3fn'?
+sol
+> poetry add "onnx>=1.12.0,<=1.16.0"
+
+---
+
+> poetry debug resolve onnxruntime
+> poetry add onnxslim==0.1.67
+> poetry add onnxruntime
+
+> cd yolov8n_saved_model; yolo predict model=yolov8n_full_integer_quant.tflite source=../face-640x640.bmp
+> poetry add jupyterlab
+> 
+> poetry add  tflite_runtime==2.14.0
+
+--- For bytetrack
+>  poetry add  cython_bbox==0.1.5
+poetry add filterpy==1.4.5
+poetry add  motmetrics
